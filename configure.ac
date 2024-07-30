@@ -1,7 +1,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([libuuid], [1.0.0], [sloowfranklin@gmail.com])
+AC_INIT([libuuid], [1.0.3], [sloowfranklin@gmail.com])
 AC_CONFIG_SRCDIR([compare.c])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE([foreign])
@@ -21,6 +21,7 @@ AC_SUBST([SOCKET_LIBS])
 
 # Checks for header files.
 AC_CHECK_HEADERS([fcntl.h inttypes.h limits.h netinet/in.h stdlib.h string.h sys/file.h sys/ioctl.h sys/socket.h sys/time.h unistd.h])
+AC_CHECK_DECLS([_SC_HOST_NAME_MAX])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_INT32_T
@@ -48,5 +49,8 @@ LIBUUID_VERSION_INFO=`expr $LIBUUID_LT_MAJOR + $LIBUUID_LT_MINOR`:$LIBUUID_LT_MI
 AC_SUBST([LIBUUID_VERSION])
 AC_SUBST([LIBUUID_VERSION_INFO])
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES(
+  [Makefile]
+  [uuid.pc]
+)
 AC_OUTPUT
